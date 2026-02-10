@@ -1,12 +1,16 @@
-# pip install yt_dlp
-
 import yt_dlp
-def download_youtube_video(url, save_path="."):
-    ydl_opts = {
-        'outtmpl': f'{save_path}/%(title)s.%(ext)s',
-        'format': 'best'
-    }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
-video_url = input("https://www.youtube.com/watch?v=aBJmmdGkSvk: ")
-download_youtube_video(video_url, save_path=".")
+
+# รับลิงก์ YouTube จากผู้ใช้
+url = input("กรุณาใส่ลิงก์ YouTube: ")
+
+# ตั้งค่าการดาวน์โหลด
+ydl_opts = {
+    'format': 'best',                # ดาวน์โหลดวิดีโอคุณภาพดีที่สุด
+    'outtmpl': '%(title)s.%(ext)s'   # ตั้งชื่อไฟล์ตามชื่อวิดีโอ
+}
+
+# ดาวน์โหลดวิดีโอ
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([url])
+
+print("ดาวน์โหลดวิดีโอเรียบร้อยแล้ว")
